@@ -1,0 +1,11 @@
+
+.email{
+    border: 1px solid black;
+}
+.email:hover{
+    cursor: pointer;
+    box-shadow: 8px 6px 5px;
+    background-color: chartreuse;
+}
+
+

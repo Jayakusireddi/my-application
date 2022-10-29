@@ -1,0 +1,12 @@
+<html>
+    <head> 
+    <style> </style>
+    </head>
+    <body>
+        <div *ngFor="let email of emails" [ngStyle]="{'font-weight': email.completed==true ? 100 : 900}">
+            <p>{{email.title}}</p>
+
+        </div>
+
+    </body>
+</html>

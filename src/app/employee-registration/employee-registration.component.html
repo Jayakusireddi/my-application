@@ -1,0 +1,49 @@
+<p>employee-registration works!</p>
+
+<h1>Employee-registration</h1>
+
+<label>Name</label>
+<input type="text"  [(ngModel)]="name">
+<br><br>
+
+<label>age</label>
+<input type="number" [(ngModel)]="age">
+<br><br>
+
+<label>company</label>
+<input type="text"  [(ngModel)]="company">
+<br><br>
+
+<label>package</label>
+<input type="number"  [(ngModel)]="package">
+<br><br>
+
+<button (click)="register()">Register</button>
+<br><br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>S.no</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Company</th>
+            <th>Package</th>
+            <th>Hike</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees; let i=index">
+            <td>{{ i+1 }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.age }}</td>
+            <td>{{ employee.company }}</td>
+            <td 
+            [ngStyle]="{ 'color': employee.package >=10 ? 'green' : 'red' }"
+            [ngClass]="{'yellow' : employee.package >=10, 'grey' : employee.package < 10}">{{employee.package}}</td>
+            <td>{{ employee.hike |percentage }}</td>
+        
+                <button class="btn btn-danger" (click)="delete(i)">delete</button>
+        </tr>
+        </tbody>
+        </table>
