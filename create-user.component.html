@@ -1,0 +1,75 @@
+<h1>Create User Form</h1>
+
+<form [formGroup]="userForm">
+    <label>Name:</label>
+    <input type="text" formControlName="name">
+    <br>
+
+    <label>Phone:</label>
+    <input type="text" formControlName="phone">
+    <br>
+
+    <label>DOB:</label>
+    <input type="date" formControlName="dob">
+    <br>
+
+    <h2>address</h2>
+
+    <div formGroupName="address">
+
+      <label>City:</label>
+      <input type="text" formControlName="city">
+     <br>
+
+      <label>Pin:</label>
+      <input type="text" formControlName="pin">
+      <br>
+
+    </div>
+
+    <button (click)="add()">add card</button>
+
+    <div formArrayName="cards">
+        <div *ngFor="let card of cardsFormArray?.controls; let i=index">
+            <div formGroupName="{{i}}">
+
+                <input type="text" formControlName="name" placeholder="name">
+                <br>
+                <input type="text" formControlName="expeiry" placeholder="expeiry">
+                <br>
+                <input type="text" formControlName="cvv" placeholder="cvv">
+                <button class="btn btn-danger" (click)="delete(i)">delete</button>
+                <br>
+                <br>
+
+            </div>
+
+
+                
+         </div>
+     </div>
+
+     <label>Type</label>
+     <input type="radio" name="type" formControlName="type" value="dayscholer">
+     <label>Day scholer</label>
+     <input type="radio" name="type" formControlName="type" value="residential">
+     <label>Residential</label>
+     <br>
+
+     <div *ngIf="userForm.get('type')?.value == 'dayscholer'">
+          <label>Bus fee:</label>
+          <input type="number" formControlName="busfee">
+          <br>
+     </div>
+
+     <div *ngIf="userForm.get('type')?.value == 'residential'">
+          <label>Hostel fee:</label>
+          <input type="number" formControlName="hostelfee">
+          <br>
+     </div>
+
+    <button (click)="submit()">submit</button>
+    
+</form>
+
+
